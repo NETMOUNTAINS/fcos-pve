@@ -71,7 +71,7 @@ then
 	echo -e "# user\npasswd:\n  users:" >> ${COREOS_FILES_PATH}/${vmid}.yaml
 	ciuser="$(qm cloudinit dump ${vmid} user 2> /dev/null | grep ^user: | awk '{print $NF}')"
 	echo "    - name: \"${ciuser:-admin}\"" >> ${COREOS_FILES_PATH}/${vmid}.yaml
-	echo "      nm: \"NETMOUNTAINS CoreOS Administrator\"" >> ${COREOS_FILES_PATH}/${vmid}.yaml
+	echo "      gecos: \"NETMOUNTAINS CoreOS Administrator\"" >> ${COREOS_FILES_PATH}/${vmid}.yaml
 	echo "      password_hash: '${cipasswd}'" >> ${COREOS_FILES_PATH}/${vmid}.yaml
 	echo '      groups: [ "sudo", "docker", "adm", "wheel", "systemd-journal" ]' >> ${COREOS_FILES_PATH}/${vmid}.yaml
 	echo '      ssh_authorized_keys:' >> ${COREOS_FILES_PATH}/${vmid}.yaml
